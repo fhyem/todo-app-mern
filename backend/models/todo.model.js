@@ -1,14 +1,12 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 mongoose
-  .connect(
-    "mongodb+srv://fhyem:fhyem123@cluster0.ciaap.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-    }
-  )
+  .connect(process.env.CONNECTION_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  })
   .then(() => console.log("Connected to MongoDB..."))
   .catch((err) => console.log("Could Not connect to MongoDB...", err));
 

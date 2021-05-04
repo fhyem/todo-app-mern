@@ -12,6 +12,9 @@ app.use(express.static("dist"));
 //     .then((person) => res.json(person))
 //     .catch((err) => res.status(400).json("Error: " + err));
 // });
+app.get("/", (req, res) => {
+  res.send("Hello to Todo API");
+});
 app.use("/todo", todoRouter);
 
 // handler for 404 Not fount
