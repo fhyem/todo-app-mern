@@ -27,10 +27,12 @@ const App = () => {
     }, 3000);
   }, [added]);
 
+  const url = "https://todo-project-mern.herokuapp.com/todo";
+
   // Fetch data from DB on reloading.
   useEffect(() => {
     axios
-      .get("http://localhost:8000/todo", { ...todo })
+      .get(url, { ...todo })
       .then((res) => {
         setList(res.data);
       })
@@ -43,7 +45,7 @@ const App = () => {
 
     if (isEditing) {
       axios
-        .put("http://localhost:8000/todo/" + _id, todo)
+        .put(url + _id, todo)
         .then((res) => console.log("Todo added: " + res.data))
         .catch((error) => console.log("Error occured: " + error));
       console.log("From edit: ", todo);
@@ -55,7 +57,7 @@ const App = () => {
       };
 
       axios
-        .post("http://localhost:8000/todo", newTodo)
+        .post(url, newTodo)
         .then((res) => {
           console.log("Todo added to list" + res.data);
           list.push(res.data);
@@ -83,7 +85,7 @@ const App = () => {
     set_Id(_id);
 
     axios
-      .get("http://localhost:8000/todo/" + _id)
+      .get(url + _id)
       .then((res) => {
         setTodo({
           name: res.data.name,
@@ -96,7 +98,7 @@ const App = () => {
 
   // Delete Entry
   const deleteEntry = (id) => {
-    axios.delete("http://localhost:8000/todo/" + id).then((response) => {
+    axios.delete(url + id).then((response) => {
       console.log(response.data);
     });
 
