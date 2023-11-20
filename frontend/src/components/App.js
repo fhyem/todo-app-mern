@@ -10,7 +10,7 @@ const App = () => {
   });
   const [_id, set_Id] = useState(0);
   const [added, setAdded] = useState(false);
-  // const [completed, setCompleted] = useState(false);
+  const [completed, setCompleted] = useState(false);
   const [deleted, setDeleted] = useState(false);
   const [list, setList] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
@@ -27,17 +27,17 @@ const App = () => {
     }, 3000);
   }, [added]);
 
-  const url = "https://todo-project-mern.herokuapp.com/todo";
+  const url = "https://localhost:8000";
 
   // Fetch data from DB on reloading.
-  useEffect(() => {
-    axios
-      .get(url, { ...todo })
-      .then((res) => {
-        setList(res.data);
-      })
-      .catch((err) => console.log("Error: ", err));
-  }, [list]);
+  // useEffect(() => {
+  //   axios
+  //     .get(url, { ...todo })
+  //     .then((res) => {
+  //       setList(res.data);
+  //     })
+  //     .catch((err) => console.log("Errorsss: ", err));
+  // }, [list]);
 
   // Handle Submit
   const handleSubmit = (e) => {
